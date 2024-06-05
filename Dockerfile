@@ -15,4 +15,5 @@ RUN CGO_ENABLED=0 GOOS=linux GO111MODULE=on go build -a -installsuffix nocgo -o 
 FROM scratch
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /traefik-forward-auth ./
+LABEL org.opencontainers.image.source https://github.com/flohoss/traefik-forward-auth
 ENTRYPOINT ["./traefik-forward-auth"]
